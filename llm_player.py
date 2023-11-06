@@ -11,8 +11,8 @@ class Player(RatingEntity, ABC):
     
     This class also defines a strategy to handle the evolution of the K factor.
     """
-    def __init__(self, rating: float):
-        super().__init__(rating, INITIAL_PLAYER_K)
+    def __init__(self, rating: float, K: int):
+        super().__init__(rating, K)
         
     def update_K(self):
         """Define the strategy to evolve K over time."""
@@ -21,9 +21,9 @@ class Player(RatingEntity, ABC):
         return self.K
     
 class LLMPlayer(Player):
-    def __init__(self, id: str):
+    def __init__(self, id: str, K: int = INITIAL_PLAYER_K):
         self.id = id
-        super().__init__(INITIAL_LLMPLAYER_RATING)
+        super().__init__(INITIAL_LLMPLAYER_RATING, K)
             
     def __str__(self):
         return f'model_id:{self.id} rating:{self.rating}'
