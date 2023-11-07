@@ -17,6 +17,7 @@ class RatingEntity:
         """        
         self.rating = rating
         self.K = K
+        self.num_battle = 0
         
     def expected_score(self, other: RatingEntity) -> float:
         """Compute the expected score(winrate) when facing the other rating entity."""

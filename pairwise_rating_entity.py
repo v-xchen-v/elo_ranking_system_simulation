@@ -35,4 +35,6 @@ class PairwiseRatingEntity:
         self.entity_a.update_rating(expected_score_a, actual_score_a)
         self.entity_b.update_rating(expected_score_b, actual_score_b)
         
-        # TODO: evolving K
+        self.entity_a.num_battle+=1
+        self.entity_b.num_battle+=1
+        
