@@ -1,10 +1,11 @@
-# https://colab.research.google.com/drive/1RAWb22-PFNI-X1gPVzc927SGUdfr6nsR?usp=sharing#scrollTo=2IdpT27Q8IE_
+# https://colab.research.google.com/drive/1RAWb22-PFNI-X1gPVzc927SGUdfr6nsR?usp=sharing#scrollTo=2IdpT27Q8IE_ where 'clean_battle_20230717.json' come from.
 
 import pandas as pd
 
-filename = 'arena_data\clean_battle_20230717.json'
-def get_arena_battles_data() -> pd.DataFrame:
-    raw_data = pd.read_json(filename).sort_values(ascending=True, by=["tstamp"])
+ARENA_BATTLE_20230717 = 'arena_data\clean_battle_20230717.json'
+
+def get_arena_battles_20230717_data() -> pd.DataFrame:
+    raw_data = pd.read_json(ARENA_BATTLE_20230717).sort_values(ascending=True, by=["tstamp"])
     # print(raw_data)
 
     # print("anony battle counts:", raw_data['anony'].value_counts())
@@ -12,13 +13,13 @@ def get_arena_battles_data() -> pd.DataFrame:
     # print(battles)
     return battles
 
-def get_arena_battles_models() -> list[str]:
-    raw_data = pd.read_json(filename).sort_values(ascending=True, by=["tstamp"])
+def list_arena_battles_20230717_models() -> list[str]:
+    raw_data = pd.read_json(ARENA_BATTLE_20230717).sort_values(ascending=True, by=["tstamp"])
     battles = raw_data[raw_data['anony']].reset_index(drop=True)
     models = pd.concat([battles['model_a'], battles['model_b']]).unique()
     return models
 
-def get_arena_battle_res_dict() -> dict:
+def get_arena_elo_res_20230717() -> dict:
     offcial_20230717result_dict = [
         {
             "Model": "claude-v1",
@@ -112,4 +113,4 @@ def get_arena_battle_res_dict() -> dict:
     return offcial_20230717result_dict
 
 if __name__ == '__main__':    
-    print(get_arena_battles_models())
+    print(list_arena_battles_20230717_models())
